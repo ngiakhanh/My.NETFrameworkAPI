@@ -101,7 +101,10 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="EnumerationConstraint\AccountIdConstraint.cs" />
+    <Compile Include="EnumerationConstraint\Base64ModelBinder.cs" />
+    <Compile Include="EnumerationConstraint\ComplexTypeDto.cs" />
     <Compile Include="EnumerationConstraint\EnumerationConstraint.cs" />
+    <Compile Include="EnumerationConstraint\StringArrayWildcardBinder.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
