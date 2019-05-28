@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using My.NETWebAPI.EnumerationConstraint;
+using System.Web.Http;
 using System.Web.Http.Routing;
 
 namespace My.NETWebAPI
@@ -13,6 +14,8 @@ namespace My.NETWebAPI
             //config.MapHttpAttributeRoutes();
             var constraintResolver = new DefaultInlineConstraintResolver();
             constraintResolver.ConstraintMap.Add("enumcheck", typeof(EnumerationConstraint.EnumerationConstraint));
+            constraintResolver.ConstraintMap.Add("validAccount", typeof(EnumerationConstraint.AccountIdConstraint));
+            constraintResolver.ConstraintMap.Add("base64", typeof(Base64Constraint));
             config.MapHttpAttributeRoutes(constraintResolver);
 
             //config.Routes.MapHttpRoute(
