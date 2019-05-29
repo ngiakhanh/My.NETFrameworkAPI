@@ -1,4 +1,5 @@
 ﻿using My.NETWebAPI.EnumerationConstraint;
+using My.NETWebAPI.Handlers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -34,11 +35,11 @@ namespace My.NETWebAPI.Controllers
         [HttpGet, Route("", Order = 2)]
         public IEnumerable<string> GetAllProducts()
         {
-            return new string[] { "product1", "product2" };
+            return new string[] { "product1", "product2", Request.GetApiKey() };
         }
 
         // GET: api/Products/5
-        [HttpGet, Route("{id:int?:range(1000,3000)}", Name = "GetById")]
+        [HttpGet, Route("{id:int?}", Name = "GetById")]
         public string GetProduct(int id = 0)
         {
             return "product-" + id;
@@ -58,7 +59,7 @@ namespace My.NETWebAPI.Controllers
             return "product-orders-" + custId;
         }
 
-        [HttpPost, Route("{productId:int= 0:range(1000,3000)}")]
+        [HttpPost, Route("{productId:int=0:range(1000,3000)}")]
         public HttpResponseMessage CreateProduct([FromUri] int prodId)
         {
             var response = Request.CreateResponse(HttpStatusCode.Created);
