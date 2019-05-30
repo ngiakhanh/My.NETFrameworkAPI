@@ -21,7 +21,7 @@ namespace My.NETWebAPI.Handlers
             {
                 if (request.Headers.Contains("X-HTTP-Method-Override"))
                 {
-                    var method = request.Headers.GetValues("X-HTTP-Method-Override").FirstOrDefault().ToUpperInvariant();
+                    var method = request.Headers.GetValues("X-HTTP-Method-Override").FirstOrDefault()?.ToUpperInvariant();
                     if (_methods.Contains(method))
                     {
                         request.Method = new HttpMethod(method);

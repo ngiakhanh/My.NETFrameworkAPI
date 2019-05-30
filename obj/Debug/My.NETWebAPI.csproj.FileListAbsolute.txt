@@ -1,3 +1,5 @@
+C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\obj\Debug\My.NETWebAPI.csprojAssemblyReference.cache
+C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\obj\Debug\My.NETWebAPI.csproj.CoreCompileInputs.cache
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\bin\My.NETWebAPI.dll.config
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\bin\My.NETWebAPI.dll
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\bin\My.NETWebAPI.pdb
@@ -63,8 +65,6 @@ C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\bin\Newtonsoft.Json.xml
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\bin\System.Net.Http.Formatting.xml
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\bin\System.Web.Http.xml
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\bin\System.Web.Http.WebHost.xml
-C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\obj\Debug\My.NETWebAPI.csprojAssemblyReference.cache
-C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\obj\Debug\My.NETWebAPI.csproj.CoreCompileInputs.cache
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\obj\Debug\My.NETWebAPI.csproj.CopyComplete
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\obj\Debug\My.NETWebAPI.dll
 C:\Users\NHK81HC\Desktop\My.NETFrameworkAPI\obj\Debug\My.NETWebAPI.pdb

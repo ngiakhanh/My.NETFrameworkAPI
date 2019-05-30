@@ -93,16 +93,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="HandlerTemplates\HandlerTemplates.sln" />
-    <Content Include="HandlerTemplates\HandlerTemplates\Global.asax" />
-    <Content Include="HandlerTemplates\HandlerTemplates\HandlerTemplates.csproj" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilters\ClientCacheControlFilterAttribute.cs" />
+    <Compile Include="ActionFilters\RouteTimerFilter.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ReturnTypesController.cs" />
     <Compile Include="EnumerationConstraint\AccountIdConstraint.cs" />
     <Compile Include="EnumerationConstraint\Base64ModelBinder.cs" />
     <Compile Include="EnumerationConstraint\ComplexTypeDto.cs" />
@@ -116,7 +116,6 @@
     <Compile Include="Handlers\FullPipelineTimerHandler.cs" />
     <Compile Include="Handlers\RemoveBadHeadersHandler.cs" />
     <Compile Include="Handlers\X-HTTP-Method-Override-Handler.cs" />
-    <Compile Include="HandlerTemplates\HandlerTemplates\App_Start\WebApiConfig.cs" />
     <Compile Include="HandlerTemplates\HandlerTemplates\Constraints\ParameterConstraintTemplate.cs" />
     <Compile Include="HandlerTemplates\HandlerTemplates\Constraints\RegexBasedConstraintTemplate.cs" />
     <Compile Include="HandlerTemplates\HandlerTemplates\ExceptionHandlers\ExceptionFilterTemplate.cs" />
@@ -127,23 +126,11 @@
     <Compile Include="HandlerTemplates\HandlerTemplates\Filters\AuthenticationFailureResult.cs" />
     <Compile Include="HandlerTemplates\HandlerTemplates\Filters\AuthenticationFilterTemplate.cs" />
     <Compile Include="HandlerTemplates\HandlerTemplates\Filters\AuthorizationFilterTemplate.cs" />
-    <Compile Include="HandlerTemplates\HandlerTemplates\Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="HandlerTemplates\HandlerTemplates\Handlers\DelegatingHandlerTemplate.cs" />
     <Compile Include="HandlerTemplates\HandlerTemplates\Models\ModelBinderTemplate.cs" />
-    <Compile Include="HandlerTemplates\HandlerTemplates\Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="HandlerTemplates\HandlerTemplates\packages.config" />
-    <Content Include="HandlerTemplates\HandlerTemplates\Web.config" />
-    <None Include="HandlerTemplates\HandlerTemplates\Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="HandlerTemplates\HandlerTemplates\Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -154,7 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="HandlerTemplates\HandlerTemplates\Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

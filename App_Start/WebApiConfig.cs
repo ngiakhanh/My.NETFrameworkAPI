@@ -1,4 +1,5 @@
-﻿using My.NETWebAPI.EnumerationConstraint;
+﻿using My.NETWebAPI.ActionFilters;
+using My.NETWebAPI.EnumerationConstraint;
 using My.NETWebAPI.Handlers;
 using System.Web.Http;
 using System.Web.Http.Routing;
@@ -15,6 +16,8 @@ namespace My.NETWebAPI
             //config.MessageHandlers.Add(new RemoveBadHeadersHandler());
             //config.MessageHandlers.Add(new X_HTTP_Method_Override_Handler());
             config.MessageHandlers.Add(new ForwardedHeadersHandler());
+
+            //config.Filters.Add(new RouteTimerFilterAttribute("Global"));
 
             // Web API routes
             //config.MapHttpAttributeRoutes();
