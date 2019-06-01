@@ -98,6 +98,8 @@
   <ItemGroup>
     <Compile Include="ActionFilters\ClientCacheControlFilterAttribute.cs" />
     <Compile Include="ActionFilters\RouteTimerFilter.cs" />
+    <Compile Include="ActionFilters\ValidateModelStateAttribute.cs" />
+    <Compile Include="ActionResults\AddHeaderResult.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />

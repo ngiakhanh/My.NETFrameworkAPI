@@ -1,9 +1,8 @@
 ﻿using My.NETWebAPI.ActionFilters;
+using My.NETWebAPI.ActionResults;
 using My.NETWebAPI.EnumerationConstraint;
 using Swashbuckle.Swagger.Annotations;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -65,9 +64,37 @@ namespace My.NETWebAPI.Controllers
             return response;
         }
 
-        // POST: api/ReturnTypes
-        public void Post([FromBody]string value)
+        [HttpGet, Route("actionresult")]
+        [ResponseType(typeof(ComplexTypeDto))]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(ComplexTypeDto))]
+        public IHttpActionResult GetActionResult()
         {
+            var dto = new ComplexTypeDto
+            {
+                String1 = "String1",
+                String2 = "String2",
+                Int1 = 1,
+                Int2 = 2,
+                Date1 = DateTime.UtcNow
+            };
+
+            var response = Ok(dto).AddHeader("X-MyCustomHeader","test");
+            // var response = BadRequest(dto);
+
+            return response;
+        }
+
+        // POST: api/ReturnTypes
+        [HttpPost, Route("object")]
+        [SwaggerResponse(HttpStatusCode.OK, Type = typeof(string))]
+        [ValidateModelState(BodyRequired=true)]
+        public IHttpActionResult Post([FromBody]ComplexTypeDto dto)
+        {
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            return Ok("Posted data valid");
         }
 
         // PUT: api/ReturnTypes/5
