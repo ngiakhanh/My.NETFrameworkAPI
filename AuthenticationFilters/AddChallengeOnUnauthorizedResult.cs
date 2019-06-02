@@ -6,7 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace HandlerTemplates.Filters
+namespace AuthenticationFilters
 {
     /// <summary>
     /// Generic WWW-Challenge IHttpActionResult implementation,

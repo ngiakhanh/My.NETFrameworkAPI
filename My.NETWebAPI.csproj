@@ -102,6 +102,10 @@
     <Compile Include="ActionResults\AddHeaderResult.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="AuthenticationFilters\AddChallengeOnUnauthorizedResult.cs" />
+    <Compile Include="AuthenticationFilters\AuthenticationFailureResult.cs" />
+    <Compile Include="AuthenticationFilters\BasicAuthFilterAttribute.cs" />
+    <Compile Include="Controllers\AuthenController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ReturnTypesController.cs" />

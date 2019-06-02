@@ -1,4 +1,4 @@
-﻿using My.NETWebAPI.ActionFilters;
+﻿using My.NETWebAPI.AuthenticationFilters;
 using My.NETWebAPI.EnumerationConstraint;
 using My.NETWebAPI.Handlers;
 using System.Web.Http;
@@ -10,7 +10,13 @@ namespace My.NETWebAPI
     {
         public static void Register(HttpConfiguration config)
         {
+            // Disable authentication in host level (before Web API)
+            config.SuppressHostPrincipal();
+
             // Web API configuration and services
+            config.Filters.Add(new BasicAuthenticationFilterAttribute());
+            config.Filters.Add(new AuthorizeAttribute());
+
             //config.MessageHandlers.Add(new ApiKeyHeaderHandler());
             //config.MessageHandlers.Add(new FullPipelineTimerHandler());
             //config.MessageHandlers.Add(new RemoveBadHeadersHandler());

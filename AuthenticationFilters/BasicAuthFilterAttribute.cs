@@ -1,15 +1,16 @@
-﻿using System;
+﻿using AuthenticationFilters;
+using System;
+using System.Collections.Generic;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Security.Principal;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
 
-namespace HandlerTemplates.Filters
+namespace My.NETWebAPI.AuthenticationFilters
 {
-    /// <summary>
-    /// Authentication filter template, with attribute support so it can be set per-controller or per-route.
-    /// </summary>
     /// <remarks>
     /// Especially for web services combined into a web app, you want to add this to your 
     /// WebApiConfig.cs Register method:
@@ -21,12 +22,12 @@ namespace HandlerTemplates.Filters
     /// There's no harm in always adding that line, even for standalone web services, 
     /// just to be sure.
     /// </remarks>
-    public class AuthenticationFilterTemplateAttribute : Attribute, IAuthenticationFilter
+    public class BasicAuthenticationFilterAttribute : Attribute, IAuthenticationFilter
     {
         /// <summary>
         /// Set to the Authorization header Scheme value that this filter is intended to support
         /// </summary>
-        public const string SupportedTokenScheme = "MyCustomToken";
+        public const string SupportedTokenScheme = "Basic";
 
         // TODO: Decide if your filter should allow multiple instances per controller or
         //       per-method; set AllowMultiple to true if so
@@ -46,6 +47,10 @@ namespace HandlerTemplates.Filters
         /// </remarks> 
         public bool SendChallenge { get; set; }
 
+        public BasicAuthenticationFilterAttribute()
+        {
+            SendChallenge = true;
+        }
         /// <summary>
         /// Logic to authenticate the credentials. Must do one of:
         ///  -- exit out, doing nothing, if it cannot understand the token scheme presented,
@@ -127,14 +132,44 @@ namespace HandlerTemplates.Filters
         private async Task<IPrincipal> ValidateCredentialsAsync(string credentials, CancellationToken cancellationToken)
         {
             // TODO: your credential validation logic here, hopefully async!!
-
+            var subject = ParseBasicAuthCredential(credentials);
             // TODO: Create an IPrincipal (generic or custom), holding an IIdentity (generic or custom)
             //       Note a very useful IPrincipal/IIdentity is ClaimsPrincipal/ClaimsIdentity if 
             //       you need both subject identifier (ex. user name), plus a set of attributes (claims) 
             //       about the subject. 
-            var principal = new GenericPrincipal(new GenericIdentity(credentials), null);
+            if (String.IsNullOrEmpty(subject.UserName) || subject.Password == "abc123")
+            {
+                return null;
+            }
 
+            IList<Claim> claimCollection = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, subject.UserName),
+                new Claim(ClaimTypes.AuthenticationInstant, DateTime.UtcNow.ToString("o")),
+                new Claim("urn:MyClaim", "my claim value")
+                // etc
+            };
+            var identity = new ClaimsIdentity(claimCollection, SupportedTokenScheme);
+            var principal = new ClaimsPrincipal(identity);
             return await Task.FromResult(principal);
+        }
+
+        private (string UserName, string Password) ParseBasicAuthCredential(string credential)
+        {
+            string password = null;
+            var subject = Encoding.GetEncoding("iso-8859-1").GetString(Convert.FromBase64String(credential));
+            if (String.IsNullOrEmpty(subject))
+            {
+                return (null, null);
+            }
+
+            if (subject.Contains(":"))
+            {
+                var index = subject.IndexOf(':');
+                password = subject.Substring(index + 1);
+                subject = subject.Substring(0, index);
+            }
+            return (subject, password);
         }
 
     }
