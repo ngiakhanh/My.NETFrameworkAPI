@@ -105,6 +105,7 @@
     <Compile Include="AuthenticationFilters\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="AuthenticationFilters\AuthenticationFailureResult.cs" />
     <Compile Include="AuthenticationFilters\BasicAuthFilterAttribute.cs" />
+    <Compile Include="AuthenticationFilters\JwtAuthenticationFilterAttribute.cs" />
     <Compile Include="Controllers\AuthenController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />

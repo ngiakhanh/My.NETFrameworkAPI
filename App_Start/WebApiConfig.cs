@@ -15,6 +15,8 @@ namespace My.NETWebAPI
 
             // Web API configuration and services
             config.Filters.Add(new BasicAuthenticationFilterAttribute());
+            config.Filters.Add(new JwtAuthenticationFilterAttribute());
+
             config.Filters.Add(new AuthorizeAttribute());
 
             //config.MessageHandlers.Add(new ApiKeyHeaderHandler());
